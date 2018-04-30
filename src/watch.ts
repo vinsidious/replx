@@ -1,7 +1,8 @@
+import * as fs from 'fs'
+
 import * as babylon from 'babylon'
 import decache from 'decache'
 import _ from 'lodash'
-import { fs } from 'mz'
 import { find } from 'simple-object-query'
 
 import generate from '@babel/generator'

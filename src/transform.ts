@@ -1,21 +1,14 @@
 import 'sucrase/register'
 import 'reify'
 
-import * as babylon from 'babylon'
-import decache from 'decache'
 import _ from 'lodash'
-import { fs } from 'mz'
 import quasilon from 'quasilon'
-import { find } from 'simple-object-query'
 
 import * as babel from '@babel/core'
-import generate from '@babel/generator'
-import traverse from '@babel/traverse'
 import * as types from '@babel/types'
+import generate from '@babel/generator'
 
 import { extractImports } from './watch'
-
-require('/Users/vince/shipotle-api/node_modules/babel-register')
 
 const q = quasilon()
 
@@ -51,9 +44,9 @@ export function transformAndExtractModules(code) {
 export function transform(originalCode) {
   const { code, ast } = babelTransform(originalCode, [
     // Transforms all 'import' statements to 'require' statements
-    ['babel-plugin-transform-es2015-modules-simple-commonjs', { strictMode: false }],
+    [require('babel-plugin-transform-es2015-modules-simple-commonjs'), { strictMode: false }],
     // Strips all TypeScript typings
-    '@babel/plugin-transform-typescript',
+    require('@babel/plugin-transform-typescript'),
     transformVariablesIntoGlobals,
     transformTopLevelAwaits
   ])

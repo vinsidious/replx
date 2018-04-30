@@ -1,3 +1,3 @@
 export default {
-  bar: 88
+  bar: 1234
 }
