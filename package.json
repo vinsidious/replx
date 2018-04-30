@@ -1,17 +1,21 @@
 {
   "name": "replx",
   "version": "0.0.0",
-  "description": "",
-  "keywords": [],
+  "description": "A TS/JS/ES REPL for your project.",
+  "keywords": ["repl", "typescript", "esnext", "es7", "javascript"],
   "main": "dist/replx.js",
   "typings": "dist/replx.d.ts",
+  "bin": {
+    "repl": "./dist/bin/replx.js",
+    "replx": "./dist/bin/replx.js"
+  },
   "files": [
     "dist"
   ],
   "author": "Vince Coppola <vincecoppola@gmail.com>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/vincecoppola/replx.git"
   },
   "license": "MIT",
   "engines": {
@@ -19,7 +23,8 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "rimraf dist && tsc && typedoc --out docs --target es6 --theme minimal --mode file src",
+    "chmodBin": "chmod +x ./dist/bin/replx.js",
+    "build": "rimraf dist && tsc && npm run chmodBin && typedoc --out docs --target es6 --theme minimal --mode file src",
     "start": "rimraf dist && tsc -w",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -72,7 +77,6 @@
     "mapCoverage": true
   },
   "devDependencies": {
-    "@types/cosmiconfig": "^4.0.0",
     "@types/jest": "^22.0.0",
     "@types/lodash": "^4.14.108",
     "@types/node": "^9.3.0",
@@ -99,33 +103,19 @@
   "dependencies": {
     "@babel/core": "^7.0.0-beta.46",
     "@babel/highlight": "^7.0.0-beta.46",
-    "@babel/plugin-transform-modules-commonjs": "^7.0.0-beta.46",
     "@babel/plugin-transform-typescript": "^7.0.0-beta.46",
-    "@babel/register": "^7.0.0-beta.46",
     "app-module-path": "^2.2.0",
     "app-root-path": "^2.0.1",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-plugin-transform-es2015-modules-simple-commonjs": "^0.3.0",
     "babylon": "^7.0.0-beta.46",
-    "bluebird": "^3.5.1",
-    "bluebird-global": "^1.0.1",
     "chalk": "^2.4.1",
-    "cli-highlight": "^1.2.3",
-    "cosmiconfig": "^4.0.0",
     "decache": "^4.4.0",
-    "draftlog": "^1.0.12",
-    "dts-gen": "^0.5.7",
     "lodash": "^4.17.10",
     "protobind": "^1.0.7",
     "quasilon": "^1.3.0",
     "reify": "^0.15.1",
     "repl.history": "^0.1.4",
-    "require-again": "^2.0.0",
     "simple-object-query": "^1.6.1",
-    "stacktracey": "^1.2.101",
-    "sucrase": "^2.0.0",
-    "terminal-kit": "^1.15.1",
-    "through": "^2.3.8"
+    "sucrase": "^2.0.0"
   }
 }
